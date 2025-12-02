@@ -96,6 +96,9 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-start bg-gradient-to-br from-black to-zinc-950 p-4 pt-64">
+      <div className="mb-6 flex h-36 w-36 items-center justify-center rounded-full border-2 border-white/80 shadow-[0_0_20px_rgba(255,255,255,0.6),0_0_40px_rgba(255,255,255,0.3)]">
+        <img src="/binoculars.png" alt="Binoculars" className="h-full w-full rounded-full object-cover" />
+      </div>
       <h1 className="mb-8 text-center text-4xl font-bold text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">
         JB Attractiveness AI
       </h1>
