@@ -6,8 +6,9 @@ export default function Navbar() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link
           href="/"
-          className="text-xl font-bold tracking-tight text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+          className="flex items-center gap-2 text-xl font-bold tracking-tight text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"
         >
+          <span className="drop-shadow-[0_0_8px_rgba(59,130,246,0.7)] filter">🌀</span>
           JB Research
         </Link>
         <Link
