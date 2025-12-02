@@ -95,9 +95,9 @@ export default function Home() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-black to-zinc-950 p-4">
+    <div className="flex min-h-screen flex-col items-center justify-start bg-gradient-to-br from-black to-zinc-950 p-4 pt-64">
       <h1 className="mb-8 text-center text-4xl font-bold text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">
-        JayBees Attractiveness AI
+        JB Attractiveness AI
       </h1>
       <main className="w-full max-w-lg rounded-2xl border border-zinc-800 bg-zinc-900/80 p-8 shadow-[0_0_30px_rgba(0,0,0,0.8)] backdrop-blur-sm">
         {/* Upload Area */}
