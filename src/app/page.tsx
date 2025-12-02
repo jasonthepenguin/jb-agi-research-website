@@ -95,15 +95,11 @@ export default function Home() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-zinc-900 to-zinc-950 p-4">
-      <main className="w-full max-w-lg rounded-2xl bg-zinc-800/50 p-8 shadow-2xl backdrop-blur-sm">
-        <h1 className="mb-2 text-center text-3xl font-bold text-white">
-          Attractiveness Predictor
-        </h1>
-        <p className="mb-8 text-center text-zinc-400">
-          Upload an image to get an attractiveness score
-        </p>
-
+    <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-black to-zinc-950 p-4">
+      <h1 className="mb-8 text-center text-4xl font-bold text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">
+        JayBees Attractiveness AI
+      </h1>
+      <main className="w-full max-w-lg rounded-2xl border border-zinc-800 bg-zinc-900/80 p-8 shadow-[0_0_30px_rgba(0,0,0,0.8)] backdrop-blur-sm">
         {/* Upload Area */}
         <div
           onDrop={handleDrop}
@@ -112,8 +108,8 @@ export default function Home() {
           onDragLeave={handleDrag}
           className={`relative mb-6 flex min-h-[200px] cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed transition-all ${
             dragActive
-              ? "border-blue-500 bg-blue-500/10"
-              : "border-zinc-600 bg-zinc-700/30 hover:border-zinc-500 hover:bg-zinc-700/50"
+              ? "border-white/50 bg-white/5 shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+              : "border-zinc-700 bg-zinc-800/50 hover:border-zinc-600 hover:bg-zinc-800/70"
           }`}
         >
           <input
@@ -131,7 +127,7 @@ export default function Home() {
           ) : (
             <div className="text-center">
               <svg
-                className="mx-auto mb-4 h-12 w-12 text-zinc-500"
+                className="mx-auto mb-4 h-12 w-12 text-zinc-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -143,11 +139,11 @@ export default function Home() {
                   d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                 />
               </svg>
-              <p className="text-zinc-400">
+              <p className="text-zinc-500">
                 Drag & drop an image or{" "}
-                <span className="text-blue-400">browse</span>
+                <span className="text-zinc-300 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">browse</span>
               </p>
-              <p className="mt-1 text-sm text-zinc-500">
+              <p className="mt-1 text-sm text-zinc-600">
                 Supports JPG, PNG, WebP
               </p>
             </div>
@@ -159,7 +155,7 @@ export default function Home() {
           <button
             onClick={handleSubmit}
             disabled={!image || loading}
-            className="flex-1 rounded-xl bg-blue-600 py-3 font-semibold text-white transition-all hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex-1 rounded-xl bg-black py-3 font-semibold text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] transition-all hover:bg-zinc-900 hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] disabled:cursor-not-allowed disabled:opacity-50 disabled:drop-shadow-none"
           >
             {loading ? (
               <span className="flex items-center justify-center gap-2">
@@ -179,16 +175,16 @@ export default function Home() {
                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                   />
                 </svg>
-                Analyzing...
+                <span className="drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">Analyzing...</span>
               </span>
             ) : (
-              "Predict"
+              <span className="drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">Predict</span>
             )}
           </button>
           {image && (
             <button
               onClick={handleReset}
-              className="rounded-xl border border-zinc-600 px-6 py-3 font-semibold text-zinc-300 transition-all hover:bg-zinc-700"
+              className="rounded-xl border border-zinc-700 bg-zinc-900 px-6 py-3 font-semibold text-zinc-400 transition-all hover:border-zinc-600 hover:text-zinc-300"
             >
               Reset
             </button>
@@ -197,18 +193,20 @@ export default function Home() {
 
         {/* Error Message */}
         {error && (
-          <div className="mb-6 rounded-xl bg-red-500/20 p-4 text-center text-red-400">
+          <div className="mb-6 rounded-xl border border-red-900/50 bg-red-950/30 p-4 text-center text-red-400">
             {error}
           </div>
         )}
 
         {/* Result */}
         {prediction !== null && (
-          <div className="rounded-xl bg-gradient-to-r from-purple-600/20 to-blue-600/20 p-6 text-center">
-            <p className="mb-2 text-sm uppercase tracking-wide text-zinc-400">
+          <div className="rounded-xl border border-zinc-700 bg-black/50 p-6 text-center">
+            <p className="mb-2 text-sm uppercase tracking-wide text-zinc-500">
               Attractiveness Score
             </p>
-            <p className="text-5xl font-bold text-white">{prediction}</p>
+            <p className="text-5xl font-bold text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]">
+              {prediction}
+            </p>
           </div>
         )}
       </main>
