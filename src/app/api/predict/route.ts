@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const HF_SPACE_URL = "https://jasonfor2020-jb-hot-regression.hf.space";
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
 
 export async function POST(request: NextRequest) {
   try {
@@ -9,6 +11,22 @@ export async function POST(request: NextRequest) {
 
     if (!image) {
       return NextResponse.json({ error: "No image provided" }, { status: 400 });
+    }
+
+    // Validate file size
+    if (image.size > MAX_FILE_SIZE) {
+      return NextResponse.json(
+        { error: "Image too large. Maximum size is 5MB" },
+        { status: 400 }
+      );
+    }
+
+    // Validate file type
+    if (!ALLOWED_TYPES.includes(image.type)) {
+      return NextResponse.json(
+        { error: "Invalid file type. Use JPG, PNG, or WebP" },
+        { status: 400 }
+      );
     }
 
     // Step 1: Upload the file to Gradio

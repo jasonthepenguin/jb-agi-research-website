@@ -11,10 +11,19 @@ export default function Home() {
   const [dragActive, setDragActive] = useState(false);
 
   const handleFile = useCallback((file: File) => {
-    if (!file.type.startsWith("image/")) {
-      setError("Please upload an image file");
+    const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+    const maxSize = 5 * 1024 * 1024; // 5MB
+
+    if (!allowedTypes.includes(file.type)) {
+      setError("Invalid file type. Use JPG, PNG, or WebP");
       return;
     }
+
+    if (file.size > maxSize) {
+      setError("Image too large. Maximum size is 5MB");
+      return;
+    }
+
     setImage(file);
     setPreview(URL.createObjectURL(file));
     setPrediction(null);
